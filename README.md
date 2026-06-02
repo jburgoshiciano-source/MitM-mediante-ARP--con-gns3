@@ -13,25 +13,25 @@ El laboratorio se ha desplegado en un entorno virtualizado utilizando **GNS3**, 
 
 ### Detalles de la Topología
 * **Segmentación de Red:** Se ha configurado basada en los últimos 4 dígitos de la matrícula.
-* **Direccionamiento IP:** Subred `198.1.98.0\24`.
+* **Direccionamiento IP:** Subred `192.168.140.0\24`.
 * **Infraestructura:**
     * **Gateway Router Cisco IOU L3
     * **Switch Cisco IOU L2
 * **Actores:**
-    * **Atacante:** Kali Linux (IP asignada : `198.1.98.60`).
-    * **Víctima:** PC1 / VPCS (IP asignada : `198.1.98.10`).
+    * **Atacante:** Kali Linux (IP asignada : `192.168.140.132`).
+    * **Víctima:** PC1 / VPCS (IP asignada : `192.168.140.120`).
       
  
-  <img width="888" height="650" alt="Image" src="https://github.com/user-attachments/assets/d3be5c83-f0de-4a50-a954-edcb1d3cc823" />
+  <img width="888" height="650" alt="Image" src="(https://github.com/jburgoshiciano-source/DoS-mediante-el-protocolo-CDP-gns3/blob/ce625f3e001c3c25838f1cb41583ae58fdad2415/1111111.png)" />
 
 
   ### Tabla de Direccionamiento
 
 | Dispositivo | Dirección IP | Máscara de Subred | Gateway Predeterminado |
 | :--- | :--- | :--- | :--- |
-| **Router Gateway** | 198.1.98.1 | 255.255.255.0 (/24) | N/A |
-| **Kali Linux (Atacante)** | 198.1.98.60 | 255.255.255.0 (/24) | 198.1.98.1 |
-| **PC1 (Víctima)** | 198.1.98.10 | 255.255.255.0 (/24) | 198.1.98.1 |
+| **Router Gateway** | 192.168.140.1 | 255.255.255.0 (/24) | N/A |
+| **Kali Linux (Atacante)** | 192.168.140.132 | 255.255.255.0 (/24) | 192.168.140.1 |
+| **PC1 (Víctima)** | 192.168.140.120 | 255.255.255.0 (/24) | 192.168.140.1 |
 ---
 
 ## 2. Requisitos Previos y Herramientas
@@ -51,9 +51,9 @@ El script `ataque_arp.py` El objetivo del script es ejecutar un ataque Man-in-th
 
 ### Parámetros Usados
 * **Interfaz:** `eth0`
-* **IP DE VICTIMA:** 198.1.98.10
-    * *IP DEL GATEWAY:* 198.1.98.1
-    * *MAC DEL ATACANTE:* 00:0C:29:CA:4E:91
+* **IP DE VICTIMA:** 192.168.140.120
+    * *IP DEL GATEWAY:* 192.168.140.1
+    * *MAC DEL ATACANTE:*  0050.7966.6800
     * *TIPO DE ATAQUE:* ARP Spoofing (envenenamiento de tablas ARP).
  
 ## 5. Medidas de Mitigación
@@ -65,6 +65,14 @@ Activar DHCP Snooping para crear una base de datos confiable usada por DAI.
 
 Entradas ARP Estáticas:
 Configurar tablas ARP estáticas en equipos críticos como servidores y gateways.
+
+# En la víctima (192.168.140.120) — fijar la MAC real del gateway
+sudo arp -s 192.168.140.1 ca01.0bff.0000
+
+# En el gateway — fijar la MAC real de la víctima
+sudo arp -s 192.168.140.120 0050.7966.6800
+
+ con las MAC reales. Una vez hecho esto, tu script de ARP poisoning no tendrá efecto porque las entradas estáticas no se sobrescriben.
 
 Segmentación de Red:
 Implementar VLANs y limitar el acceso entre segmentos para reducir el alcance del ataque.
