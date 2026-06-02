@@ -76,10 +76,10 @@ Monitoreo de Red:
 Utilizar herramientas de detección de anomalías ARP para identificar ataques MitM.
 
 # En la víctima (192.168.140.120) — fijar la MAC real del gateway
-sudo arp -s 192.168.140.1 ca01.0bff.0000
+arp -s 192.168.140.1 ca01.0bff.0000
 
 # En el gateway — fijar la MAC real de la víctima
-sudo arp -s 192.168.140.120 0050.7966.6800
+arp -s 192.168.140.120 0050.7966.6800 arp
 
- con las MAC reales. Una vez hecho esto, tu script de ARP poisoning no tendrá efecto porque las entradas estáticas no se sobrescriben.
+con las MAC reales. Una vez hecho esto, tu script de ARP poisoning no tendrá efecto porque las entradas estáticas no se sobrescriben.
 
