@@ -69,6 +69,12 @@ Activar DHCP Snooping para crear una base de datos confiable usada por DAI.
 Entradas ARP Estáticas:
 Configurar tablas ARP estáticas en equipos críticos como servidores y gateways.
 
+Segmentación de Red:
+Implementar VLANs y limitar el acceso entre segmentos para reducir el alcance del ataque.
+
+Monitoreo de Red:
+Utilizar herramientas de detección de anomalías ARP para identificar ataques MitM.
+
 # En la víctima (192.168.140.120) — fijar la MAC real del gateway
 sudo arp -s 192.168.140.1 ca01.0bff.0000
 
@@ -77,8 +83,3 @@ sudo arp -s 192.168.140.120 0050.7966.6800
 
  con las MAC reales. Una vez hecho esto, tu script de ARP poisoning no tendrá efecto porque las entradas estáticas no se sobrescriben.
 
-Segmentación de Red:
-Implementar VLANs y limitar el acceso entre segmentos para reducir el alcance del ataque.
-
-Monitoreo de Red:
-Utilizar herramientas de detección de anomalías ARP para identificar ataques MitM.
