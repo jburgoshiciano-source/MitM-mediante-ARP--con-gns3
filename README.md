@@ -22,7 +22,7 @@ El laboratorio se ha desplegado en un entorno virtualizado utilizando **GNS3**, 
     * **Víctima:** PC1 / VPCS (IP asignada : `192.168.140.120`).
       
  
-  <img width="888" height="650" alt="Image" src="(https://github.com/jburgoshiciano-source/DoS-mediante-el-protocolo-CDP-gns3/blob/ce625f3e001c3c25838f1cb41583ae58fdad2415/1111111.png)" />
+  <img width="888" height="650" alt="Image" src=https://github.com/jburgoshiciano-source/DoS-mediante-el-protocolo-CDP-gns3/blob/ce625f3e001c3c25838f1cb41583ae58fdad2415/1111111.png
 
 
   ### Tabla de Direccionamiento
